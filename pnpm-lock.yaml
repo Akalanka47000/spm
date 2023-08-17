@@ -494,6 +494,55 @@ importers:
         specifier: 1.12.1
         version: 1.12.1
 
+  services/payment:
+    dependencies:
+      '@app/constants':
+        specifier: workspace*
+        version: link:../../packages/constants
+      '@app/middleware':
+        specifier: workspace*
+        version: link:../../packages/middleware
+      '@app/server':
+        specifier: workspace*
+        version: link:../../packages/server
+      '@sliit-foss/functions':
+        specifier: 2.0.1
+        version: 2.0.1
+      '@sliit-foss/module-logger':
+        specifier: 1.1.2
+        version: 1.1.2
+      '@sliit-foss/mongoose-filter-query':
+        specifier: 1.1.1
+        version: 1.1.1
+      celebrate:
+        specifier: 15.0.1
+        version: 15.0.1
+      express:
+        specifier: 4.16.3
+        version: 4.16.3
+      express-http-context:
+        specifier: 1.2.4
+        version: 1.2.4
+      http-errors:
+        specifier: 2.0.0
+        version: 2.0.0
+      lodash:
+        specifier: 4.17.10
+        version: 4.17.10
+      mongoose:
+        specifier: ^6.3.4
+        version: 6.10.1
+      mongoose-paginate-v2:
+        specifier: 1.6.3
+        version: 1.6.3
+      stripe:
+        specifier: 12.1.1
+        version: 12.1.1
+    devDependencies:
+      nodemon:
+        specifier: 1.12.1
+        version: 1.12.1
+
   services/product:
     dependencies:
       '@app/constants':
@@ -9828,6 +9877,14 @@ packages:
   /strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
+
+  /stripe@12.1.1:
+    resolution: {integrity: sha512-vn74vXtZeJx18oGzA0AhL818euhLF/juCgkKrJfAS1Y0bp5/EzQKPuc/75qQUvY43nNGIkgOVb3kUBuyoeqEkA==}
+    engines: {node: '>=12.*'}
+    dependencies:
+      '@types/node': 18.14.6
+      qs: 6.11.0
+    dev: false
 
   /strnum@1.0.5:
     resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
