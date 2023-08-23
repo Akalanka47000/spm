@@ -9432,14 +9432,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /stripe@12.1.1:
-    resolution: {integrity: sha512-vn74vXtZeJx18oGzA0AhL818euhLF/juCgkKrJfAS1Y0bp5/EzQKPuc/75qQUvY43nNGIkgOVb3kUBuyoeqEkA==}
-    engines: {node: '>=12.*'}
-    dependencies:
-      '@types/node': 18.14.6
-      qs: 6.11.0
-    dev: false
-
   /strnum@1.0.5:
     resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
     dev: false
