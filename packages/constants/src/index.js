@@ -8,7 +8,10 @@ export const protectedRoutes = ['/v1/auth/login', '/v1/auth/register', '/v1/auth
 
 export const roles = createEnum(['admin', 'seller', 'buyer']);
 
-export const orderStatuses = createEnum(['pending', 'confirmed']);
+export const orderStatuses = ['confirmed', 'paid'].reduce((acc, role) => {
+  acc[role] = role;
+  return acc;
+}, {});
 
 export const objectIdSchema = (name = 'id') =>
   Joi.object({
