@@ -8,10 +8,7 @@ export const whitelistedRoutes = ['/v1/auth/login', '/v1/auth/register', '/v1/au
 
 export const roles = createEnum(['admin', 'seller', 'buyer']);
 
-export const orderStatuses = ['confirmed', 'paid'].reduce((acc, role) => {
-  acc[role] = role;
-  return acc;
-}, {});
+export const orderStatuses = createEnum(['confirmed', 'paid']);
 
 export const objectIdSchema = (name = 'id') =>
   Joi.object({
