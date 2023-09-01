@@ -38,7 +38,7 @@ const Home = () => {
               <Filters filters={filters} setFilterQuery={setFilterQuery} />
               <Sorts sorts={sorts} setSortQuery={setSortQuery} />
             </div>
-            {(user.role === 'seller' || user.role === 'admin') && (
+            {showAddProductBtn && (
               <div class="w-11/12 flex justify-end items-center mt-6 lg:mt-0 mb-6">
                 <Link to="/product-add">
                   <Button className="py-1.5 px-6 mb-2">Add Product</Button>
