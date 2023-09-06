@@ -2,11 +2,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import AnimatedRoutes from './routes';
 import store from './store';
+import 'rc-slider/assets/index.css';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="App">
+      <div className="App ">
         <BrowserRouter>
           <AnimatedRoutes />
         </BrowserRouter>

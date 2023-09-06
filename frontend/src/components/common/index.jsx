@@ -8,3 +8,5 @@ export { default as Lottie } from './lottie';
 export { default as Sorts } from './sorts';
 export { default as Dropdown } from './dropdown';
 export { default as NoRecords } from './noRecords';
+
+export * from './settings';

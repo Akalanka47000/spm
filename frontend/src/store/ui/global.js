@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   showLoader: false,
+  showSettingDrawer: false,
 };
 
 export const slice = createSlice({
@@ -11,9 +12,12 @@ export const slice = createSlice({
     toggleLoader(state, action) {
       state.showLoader = action.payload;
     },
+    toggleSettingDrawer(state, action) {
+      state.showSettingDrawer = action.payload || !state.showSettingDrawer;
+    },
   },
 });
 
-export const { toggleLoader } = slice.actions;
+export const { toggleLoader, toggleSettingDrawer } = slice.actions;
 
 export default slice.reducer;
