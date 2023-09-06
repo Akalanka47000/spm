@@ -6,6 +6,6 @@ export const constructReceiptEmailPayload = (email, order) => ({
   },
   options: {
     to: [email],
-    subject: 'Pharmaceutical Payment Receipt',
+    subject: 'IShop 2.0 Payment Receipt',
   },
 });

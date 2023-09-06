@@ -5,7 +5,7 @@ export const serviceInitializePayment = (payment) => {
   return traced(createPaymentIntent)({
     amount: Number((payment.amount * 100).toFixed(0)),
     currency: 'lkr',
-    description: `Pharmaceutical Order Payment`,
+    description: `IShop 2.0 Order Payment`,
     metadata: payment.metadata,
     shipping: {
       name: payment.customer.name,

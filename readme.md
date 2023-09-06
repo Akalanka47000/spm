@@ -1,6 +1,6 @@
-# pharmaceutical
+# Ishop2.0
 
-This is a [Turborepo](https://turbo.build/repo) designed to house all components of the Pharmaceutical project.
+This is a [Turborepo](https://turbo.build/repo) designed to house all components of the Ishop2.0 project.
 
 </br>
 
