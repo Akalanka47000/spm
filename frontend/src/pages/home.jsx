@@ -64,7 +64,7 @@ const Home = () => {
                     })}
                   </div>
                 ) : (
-                  <NoRecords text="No Products Found" className="mt-12" />
+                  <NoRecords text="No Items Found" className="mt-12" />
                 )}
               </div>
               <div class="w-full flex justify-end items-center mt-4 md:mt-0">

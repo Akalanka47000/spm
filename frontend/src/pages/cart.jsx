@@ -59,11 +59,10 @@ const Cart = () => {
             </div>
             <Table striped={true} hoverable={true} class="w-full">
               <Table.Head>
-                <Table.HeadCell>Product Name</Table.HeadCell>
+                <Table.HeadCell>Item Name</Table.HeadCell>
                 <Table.HeadCell>Selling Price</Table.HeadCell>
                 <Table.HeadCell>Type</Table.HeadCell>
                 <Table.HeadCell>Unit</Table.HeadCell>
-                <Table.HeadCell>Age Limit</Table.HeadCell>
               </Table.Head>
               <Table.Body class="divide-y">
                 {products?.map((product) => {
@@ -73,7 +72,6 @@ const Cart = () => {
                       <Table.Cell>LKR {product.selling_price.toFixed(2)}</Table.Cell>
                       <Table.Cell>{product.type}</Table.Cell>
                       <Table.Cell>{product.measurement_unit}</Table.Cell>
-                      <Table.Cell>{product.age_limit}</Table.Cell>
                     </Table.Row>
                   );
                 })}

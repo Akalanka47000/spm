@@ -59,7 +59,7 @@ const ProductForm = () => {
             <div class="bg-gray-100/10 rounded-xl shadow border-2 p-6 md:p-12 mx-6 md:mx-24 my-6">
               <div class="flex flex-col">
                 <div class="flex flex-col lg:flex-row justify-between items-center gap-x-3">
-                  <Input id="name" placeholder="Product Name" label wrapperclasses="w-full" onChange={handleInputChange} required value={formData.name} />
+                  <Input id="name" placeholder="Item Name" label wrapperclasses="w-full" onChange={handleInputChange} required value={formData.name} />
                   <Dropdown id="type" filterkey="type" label="Type" options={allowedTypes} className="h-14" wrapperclasses="my-2 sm:my-0" onChange={handleInputChange} />
                 </div>
                 <div class="flex flex-col lg:flex-row justify-between items-center gap-x-3">
@@ -67,13 +67,12 @@ const ProductForm = () => {
                     id="measurement_unit"
                     type="text"
                     label
-                    placeholder="Measurement Unit Per Product"
+                    placeholder="Measurement Unit Per Item"
                     wrapperclasses="w-full"
                     onChange={handleInputChange}
                     required
                     value={formData.measurement_unit}
                   />
-                  <Input id="age_limit" type="number" placeholder="Age Limit For Consuming Product" label wrapperclasses="w-full" onChange={handleInputChange} required value={formData.age_limit} />
                 </div>
                 <div class="flex flex-col lg:flex-row justify-between items-center gap-x-3">
                   <Input id="markup_price" type="number" placeholder="Markup Price Rs" label wrapperclasses="w-full" onChange={handleInputChange} required value={formData.markup_price} />

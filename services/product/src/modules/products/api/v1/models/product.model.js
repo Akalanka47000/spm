@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
+import { productTypes } from '@app/constants';
 
 const ProductSchema = new mongoose.Schema(
   {
@@ -10,13 +11,9 @@ const ProductSchema = new mongoose.Schema(
     type: {
       type: String,
       required: true,
-      enum: ['Supplements and Herbs', 'Sports and Nutrition', 'Medicine', 'Beauty', 'Bath'],
+      enum: productTypes,
     },
     measurement_unit: {
-      type: String,
-      required: true,
-    },
-    age_limit: {
       type: String,
       required: true,
     },

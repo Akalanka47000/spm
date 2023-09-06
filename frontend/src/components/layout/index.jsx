@@ -5,7 +5,7 @@ import Footer from './footer';
 import Navbar from './navbar';
 import { useAuth } from '../../hooks';
 
-export const Layout = ({ children, hideHeader, hideFooter }) => {
+export const Layout = ({ children, hideHeader, hideFooter, className = "" }) => {
   useAuth();
 
   return (
@@ -17,7 +17,7 @@ export const Layout = ({ children, hideHeader, hideFooter }) => {
       transition={{ duration: 0.3 }}
     >
       {!hideHeader && <Navbar />}
-      <div class="w-screen min-h-screen relative z-[5]">{children}</div>
+      <div class={`"w-screen min-h-screen relative z-[5]" ${className}`}>{children}</div>
       {!hideFooter && <Footer />}
       <ToastContainer />
       <Loader />

@@ -39,8 +39,8 @@ const Login = () => {
   };
 
   return (
-    <Layout title="Login" hideHeader hideFooter>
-      <div class="w-full py-12 px-7 md:px-12 rounded-2xl">
+    <Layout title="Login" hideHeader hideFooter className="flex flex-col justify-center">
+      <div class="w-full max-w-[1620px] mx-auto py-12 px-7 md:px-12 rounded-2xl">
         <div class="flex justify-center items-center">
           <div class="w-11/12 sm:w-7/12 xl:w-4/12 2xl:w-[27%] mb-10">
             <Lottie animationData={LoginAnimation} />

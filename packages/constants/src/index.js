@@ -16,3 +16,5 @@ export const objectIdSchema = (name = 'id') =>
   });
 
 export const paymentStatuses = createEnum(['raw', 'initialized', 'cancelled', 'paid']);
+
+export const productTypes = ['Bakery', 'Dairy', 'Seafood', 'Meat', 'Beverage', 'Floral', 'Prepared Food', 'Vegetables', 'Pet Care', 'Baby Items', 'Household', 'Snacks', 'Medicine'];

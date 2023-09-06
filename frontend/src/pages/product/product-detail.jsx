@@ -65,6 +65,11 @@ function ProductDetail() {
     addProductRating(productId, rating);
   };
 
+  const onCopyId = () => {
+    navigator.clipboard.writeText(productId);
+    toast.success('Product ID copied successfully');
+  }
+
   return (
     <Layout title="ProductDetail">
       <div class=" bg-gray-100/10 rounded-xl shadow border-2 mx-6 md:mx-24 my-6 p-4 relative">
@@ -98,7 +103,6 @@ function ProductDetail() {
             <Table.Head>
               <Table.HeadCell>Type</Table.HeadCell>
               <Table.HeadCell>Per Unit</Table.HeadCell>
-              <Table.HeadCell>Age Limit</Table.HeadCell>
               <Table.HeadCell>Expiry Date</Table.HeadCell>
               <Table.HeadCell>Manufactured Date</Table.HeadCell>
             </Table.Head>
@@ -106,7 +110,6 @@ function ProductDetail() {
               <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{product.type}</Table.Cell>
                 <Table.Cell>{product.measurement_unit}</Table.Cell>
-                <Table.Cell>{product.age_limit}</Table.Cell>
                 <Table.Cell>{expiryDate}</Table.Cell>
                 <Table.Cell>{manuDate}</Table.Cell>
               </Table.Row>
@@ -120,10 +123,13 @@ function ProductDetail() {
             >
               {product.stock <= 0 ? 'Out of Stock' : cart.includes(productId) ? 'Remove from cart' : 'Add to cart'}
             </Button>
-            {user.role === 'admin' ||
-              (user.role === 'seller' && user._id === product.seller?._id && (
-                <>
-                  <Link to="/">
+            {(user.role === 'admin' || (user.role === 'seller' && user._id === product.seller?._id)) && (
+              <>
+                <Button className="w-full py-4 text-base mt-4" onClick={onCopyId}>
+                  Copy ID
+                </Button>
+                <div className='flex flex-col md:flex-row gap-5'>
+                  <Link to="/" className='w-full'>
                     <Button className="w-full py-4 text-base bg-red-500 hover:bg-red-600 mt-4" onClick={() => deleteProduct(productId)}>
                       Delete
                     </Button>
@@ -131,8 +137,9 @@ function ProductDetail() {
                   <Button className="w-full py-4 text-base mt-4" onClick={onClickEdit}>
                     Edit
                   </Button>
-                </>
-              ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
