@@ -54,8 +54,8 @@ const Home = () => {
                         <Link to={`/product-detail/${product._id}`}>
                           <div className="w-full h-[30vh] border-2 border-base-primary relative rounded-md hover:scale-102 transition-all duration-300 cursor-pointer">
                             <img className="w-full h-full object-cover rounded-md" src={product.image} />
-                            <div className="w-full absolute bottom-0 py-3 min-h-14 bg-black/80 rounded-b-md flex flex-row justify-between items-center text-white px-6">
-                              <span>{product.name}</span>
+                            <div className="w-full absolute bottom-0 py-3 min-h-14 bg-black/80 rounded-b-md flex flex-row justify-between items-center text-white px-6" >
+                              <span >{product.name}</span>
                               <span>Rs. {product.selling_price.toFixed(2)}</span>
                             </div>
                           </div>

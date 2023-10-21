@@ -6,11 +6,21 @@ import { isEmpty } from 'lodash';
 import { Button } from '../common';
 import { logout } from '../../services';
 
+let utterance = new SpeechSynthesisUtterance();
+const speak = (text) => {
+  utterance.voice = window.speechSynthesis.getVoices()[1];
+  utterance.lang = 'en-US';
+  utterance.text = text;
+  window.speechSynthesis.speak(utterance);
+};
+
 const NavLink = ({ path, label }) => {
   const location = useLocation();
   return (
     <Navbar.Link href={path}>
-      <span class={`hover:text-black hover:font-semibold ${location.pathname === path ? 'text-black font-semibold' : ''}`}>{label}</span>
+      <span class={`hover:text-black hover:font-semibold ${location.pathname === path ? 'text-black font-semibold' : ''}`} onMouseEnter={() => speak(label)}>
+        {label}
+      </span>
     </Navbar.Link>
   );
 };
@@ -36,7 +46,9 @@ const Header = () => {
           {isEmpty(user) && (
             <>
               <Link to="/login">
-                <Button className="py-1.5 px-6">Login</Button>
+                <Button className="py-1.5 px-6" onMouseEnter={(e) => speak(e.target.innerText)}>
+                  Login
+                </Button>
               </Link>
             </>
           )}
@@ -45,7 +57,7 @@ const Header = () => {
               <Link to="/profile" class="py-1.5 px-1.5 rounded-full mr-2 md:mr-3 shadow-lg border-2 border-primary-base">
                 <UserIcon className="h-5 w-5" />
               </Link>
-              <Button className="py-2 px-3 md:px-6" onClick={logoutClick}>
+              <Button className="py-2 px-3 md:px-6" onMouseEnter={() => speak('Logout')} onClick={logoutClick}>
                 <LogoutIcon className="h-5 w-5" />
               </Button>
             </>
