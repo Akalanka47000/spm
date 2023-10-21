@@ -2,6 +2,15 @@ import { useState, useEffect } from 'react';
 import { Input, Dropdown } from '.';
 import { Accordion } from 'flowbite-react';
 
+
+let utterance = new SpeechSynthesisUtterance();
+const speak = (text) => {
+  utterance.voice = window.speechSynthesis.getVoices()[1];
+  utterance.lang = 'en-US';
+  utterance.text = text;
+  window.speechSynthesis.speak(utterance);
+};
+
 const Filters = ({ filters, setFilterQuery }) => {
   const [filtersLocalState, setFiltersLocalState] = useState(filters);
 
@@ -35,14 +44,14 @@ const Filters = ({ filters, setFilterQuery }) => {
               base: 'flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg py-5 px-5 text-left font-medium !text-white !bg-primary-base hover:!bg-primary-hover focus:!bg-primary-hover focus:!ring-2 focus:!ring-gray-200',
             }}
           >
-            <span class="text-2xl font-semibold">Filters</span>
+            <span class="text-2xl font-semibold" onMouseEnter={(e) => speak(e.target.innerText)}>Filters</span>
           </Accordion.Title>
           <Accordion.Content>
             <div class="w-full flex justify-start items-center flex-wrap gap-x-6">
               {filtersLocalState.map((filter, index) => {
                 return (
                   <div key={`filter-${filter.key}-${index}`} class="w-full md:w-auto h-full flex flex-col justify-center items-start">
-                    <span class="text-md text-black mt-2 mb-1">{filter.label}</span>
+                    <span class="text-md text-black mt-2 mb-1" onMouseEnter={(e) => speak(e.target.innerText)}>{filter.label}</span>
                     {filter.options ? (
                       <Dropdown filterkey={filter.key} options={filter.options} className="h-12 sm:h-12" onChange={onFilterChange} />
                     ) : (

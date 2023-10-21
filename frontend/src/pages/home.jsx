@@ -7,6 +7,14 @@ import { Button, Filters, NoRecords, Sorts } from '../components/common';
 import { default as Layout } from '../components/layout';
 import { getAllProducts } from '../services/product';
 
+let utterance = new SpeechSynthesisUtterance();
+const speak = (text) => {
+  utterance.voice = window.speechSynthesis.getVoices()[1];
+  utterance.lang = 'en-US';
+  utterance.text = text;
+  window.speechSynthesis.speak(utterance);
+};
+
 const Home = () => {
   const [productRes, setproductRes] = useState(null);
   const [page, setPage] = useState(1);
@@ -41,7 +49,7 @@ const Home = () => {
             {showAddProductBtn && (
               <div class="w-11/12 flex justify-end items-center mt-6 lg:mt-0 mb-6">
                 <Link to="/product-add">
-                  <Button className="py-1.5 px-6 mb-2">Add Product</Button>
+                  <Button className="py-1.5 px-6 mb-2" onMouseEnter={(e) => speak(e.target.innerText)}>Add Product</Button>
                 </Link>
               </div>
             )}
@@ -52,10 +60,10 @@ const Home = () => {
                     {productRes.docs?.map((product) => {
                       return (
                         <Link to={`/product-detail/${product._id}`}>
-                          <div className="w-full h-[30vh] border-2 border-base-primary relative rounded-md hover:scale-102 transition-all duration-300 cursor-pointer">
+                          <div className="w-full h-[30vh] border-2 border-base-primary relative rounded-md hover:scale-102 transition-all duration-300 cursor-pointer" onMouseEnter={(e) => speak("Product, "+product.name +"price is , " +product.selling_price)}>
                             <img className="w-full h-full object-cover rounded-md" src={product.image} />
-                            <div className="w-full absolute bottom-0 py-3 min-h-14 bg-black/80 rounded-b-md flex flex-row justify-between items-center text-white px-6">
-                              <span>{product.name}</span>
+                            <div className="w-full absolute bottom-0 py-3 min-h-14 bg-black/80 rounded-b-md flex flex-row justify-between items-center text-white px-6" >
+                              <span >{product.name}</span>
                               <span>Rs. {product.selling_price.toFixed(2)}</span>
                             </div>
                           </div>

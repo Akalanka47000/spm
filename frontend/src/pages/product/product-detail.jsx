@@ -9,6 +9,14 @@ import { setFormData } from '../../store/ui/products';
 import { getSingleProduct, deleteProduct, addProductRating } from '../../services';
 import toast from '../../libs/toastify';
 
+let utterance = new SpeechSynthesisUtterance();
+const speak = (text) => {
+  utterance.voice = window.speechSynthesis.getVoices()[1];
+  utterance.lang = 'en-US';
+  utterance.text = text;
+  window.speechSynthesis.speak(utterance);
+};
+
 function ProductDetail() {
   const { product_id: productId } = useParams();
   const [product, setProduct] = useState({});
@@ -46,9 +54,11 @@ function ProductDetail() {
   };
 
   const onClickAddToCart = () => {
-    if (!user._id) return toast.warn('You need to be logged in before adding an item to a cart');
+    if (!user._id) { speak('You need to be logged in before adding an item to a cart');
+       return toast.warn('You need to be logged in before adding an item to a cart')}
     setCart([...cart, productId]);
     localStorage.setItem('cart', JSON.stringify([...cart, productId]));
+    speak('Product added to cart successfully');
     toast.success('Product added to cart successfully');
   };
 
@@ -56,17 +66,20 @@ function ProductDetail() {
     const updatedCart = cart.filter((product) => product !== productId);
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+    speak('Product removed from cart successfully');
     toast.success('Product removed from cart successfully');
   };
 
   const onRatingClick = (rating) => {
-    if (!user._id) return toast.warn('You need to be logged in before rating an item');
+    if (!user._id)  { speak('You need to be logged in before rating an item');
+      return  toast.warn('You need to be logged in before rating an item')}
     setRating(rating);
     addProductRating(productId, rating);
   };
 
   const onCopyId = () => {
     navigator.clipboard.writeText(productId);
+    speak('Product ID copied successfully');
     toast.success('Product ID copied successfully');
   }
 
@@ -108,10 +121,10 @@ function ProductDetail() {
             </Table.Head>
             <Table.Body className="divide-y">
               <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{product.type}</Table.Cell>
+                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white" onMouseEnter={(e) => speak(product.type +" type")}>{product.type}</Table.Cell>
                 <Table.Cell>{product.measurement_unit}</Table.Cell>
-                <Table.Cell>{expiryDate}</Table.Cell>
-                <Table.Cell>{manuDate}</Table.Cell>
+                <Table.Cell onMouseEnter={(e) => speak("expire date is " + expiryDate)}>{expiryDate}</Table.Cell>
+                <Table.Cell onMouseEnter={(e) => speak("manufacture date is " + manuDate)}>{manuDate}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
