@@ -43,10 +43,10 @@ const Header = () => {
           {!isEmpty(user) && (
             <>
               <Link to="/profile" class="py-1.5 px-1.5 rounded-full mr-2 md:mr-3 shadow-lg border-2 border-primary-base">
-                <UserIcon className="h-5 w-5" />
+                <UserIcon className="w-5 h-5" />
               </Link>
-              <Button className="py-2 px-3 md:px-6" onClick={logoutClick}>
-                <LogoutIcon className="h-5 w-5" />
+              <Button className="px-3 py-2 md:px-6" onClick={logoutClick}>
+                <LogoutIcon className="w-5 h-5" />
               </Button>
             </>
           )}
@@ -59,6 +59,7 @@ const Header = () => {
           <>
             <NavLink path="/cart" label="Cart" />
             <NavLink path="/tickets" label="Tickets" />
+            <NavLink path="/navigation" label="Navigation" />
           </>
         )}
         {user?.role === 'admin' && (

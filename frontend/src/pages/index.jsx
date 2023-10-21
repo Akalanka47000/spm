@@ -9,6 +9,7 @@ export { default as Dashboard } from './dashboard';
 export { default as Profile } from './profile';
 export { default as Orders } from './orders';
 export { default as Cart } from './cart';
+export { default as Navigation } from './navigation';
 export * from './auth';
 export * from './payment';
 export * from './product';
